@@ -11,7 +11,7 @@ const FolderItem = (props) => {
         onTouchEnd={props.onTouchEnd}
         onTouchMove={props.onTouchMove}>
             <div className="context__menu--wrapper" onClick={props.clickStopPropagation}>
-                <NewContextMenu gridMode={true} folderMode={true} quickItemMode={props.parent !== "/"} contextSelected={props.state.contextSelected} closeContext={props.closeContext} downloadFile={props.downloadFile} file={props} changeEditNameMode={props.changeEditNameMode} closeEditNameMode={props.closeEditNameMode} changeDeleteMode={props.changeDeleteMode} startMovingFile={props.startMoveFolder} lockFile={111}/>
+                <NewContextMenu gridMode={true} folderMode={true} quickItemMode={props.parent !== "/"} contextSelected={props.state.contextSelected} closeContext={props.closeContext} downloadFile={props.downloadFile} file={props} changeEditNameMode={props.changeEditNameMode} closeEditNameMode={props.closeEditNameMode} changeDeleteMode={props.changeDeleteMode} startMovingFile={props.startMoveFolder} lockFile={props.lockFile}/>
             </div>
             <div class={props._id !== props.selected ? "folders__image" : "folders__image folder__selected"}>
                 <i class="fas fa-folder" aria-hidden={true}></i>

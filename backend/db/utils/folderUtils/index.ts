@@ -20,6 +20,14 @@ class DbUtil {
 
         const folder = await Folder.findOne({"owner": userID, "_id": new ObjectID(folderID)}) as FolderInterface;
 
+        if(folder.lockDate != undefined){
+            let ts = Date.now();
+            let currDate = new Date(ts);
+            if(folder.lockDate < currDate){
+                folder.lockDate = undefined;
+            }
+        }
+
         return folder;
     }
 

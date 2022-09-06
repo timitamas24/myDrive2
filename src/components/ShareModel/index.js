@@ -438,26 +438,6 @@ class ShareModelContainer extends React.Component {
                 </a>
               </div>
             </div>
-            <div class="share__recipient">
-              <p>Send to:</p>
-              <form onSubmit={this.sendEmail}>
-                <div class="group__input float__span">
-                  <input onChange={this.onChangeEmail} value={this.state.sendTo} type="text" placeholder="Email Address"/>
-                  {/* <span>Email address</span> */}
-                </div>
-                <div class="group__submit">
-                  <input type="submit" value="Send" />
-                </div>
-              </form>
-              <div class="share__success" style={this.state.emailSent ? {display:"block"} : {display:"none"}}>
-                <p>
-                  <span>
-                    <img src="/assets/success.svg" alt="success" />
-                  </span>{" "}
-                  Email sent successfully
-                </p>
-              </div>
-            </div>
             <div className="share-model-spinner-wrapper" style={!this.state.loaded ? {} : {display: "none"}}>
               <SpinnerPage />
             </div>

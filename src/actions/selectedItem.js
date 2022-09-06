@@ -66,9 +66,9 @@ export const startSetSelectedItem = (id, file, fromQuickItems, isGoogleDrive) =>
 
                 axios.get(`/folder-service/info/${id}`).then((results) => {
 
-                    const {name, 0: size, createdAt: date, parentName: location, _id: id, drive, personalFolder: personalFile} = results.data;
+                    const {name, 0: size, createdAt: date, parentName: location, _id: id, drive, personalFolder: personalFile, lockDate} = results.data;
     
-                    dispatch(setSelectedItem({name, size, date, file, location, data: results.data, id, drive, personalFile}))
+                    dispatch(setSelectedItem({name, size, date, file, location, data: results.data, id, drive, personalFile, lockDate}))
                     
                 }).catch((err) => {
                     console.log(err)

@@ -218,6 +218,23 @@ class FolderItemContainer extends React.Component {
         this.props.dispatch(setMoverID(this.props._id, this.props.parent, false, this.props.drive, this.props.personalFolder));
     }
 
+    lockFile = (folderid) => {
+
+        Swal.fire({
+            title: 'Please select unlock date',
+            html: '<input class="swal2-input" type="date" id="datelock">',
+            stopKeydownPropagation: false,
+        }).then((result) => {
+            console.log(document.getElementById('datelock'));
+            let val = document.getElementById('datelock').value;
+            console.log(val);
+
+            this.props.dispatch(startLockFolder(folderid, val));
+            this.props.dispatch(startSetSelectedItem(this.props._id, false));
+        })
+
+    }
+
     render() {
 
         return <FolderItem 
@@ -232,7 +249,7 @@ class FolderItemContainer extends React.Component {
                 closeEditNameMode={this.closeEditNameMode}
                 startMoveFolder={this.startMoveFolder}
                 changeDeleteMode={this.changeDeleteMode}
-                lockFile={(id)=>console.log(33)}
+                lockFile={this.lockFile}
                 state={this.state}
                 {...this.props}/>
     }

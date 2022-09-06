@@ -302,7 +302,7 @@ class RightSectionContainer extends React.Component {
     lockFile = (folderid) => {
 
         Swal.fire({
-            title: 'Please enter departure date',
+            title: 'Please select unlock date',
             html: '<input class="swal2-input" type="date" id="datelock">',
             stopKeydownPropagation: false,
         }).then((result) => {
@@ -311,6 +311,8 @@ class RightSectionContainer extends React.Component {
             console.log(val);
 
             this.props.dispatch(startLockFolder(folderid, val));
+            this.resetSelected();
+            // this.props.dispatch(startSetSelectedItem(this.props.selectedItem.id, false));
         })
 
     }

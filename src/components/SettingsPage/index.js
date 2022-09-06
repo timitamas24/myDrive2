@@ -1017,17 +1017,6 @@ class SettingsPageContainer extends React.Component {
             </div>
           </div>
 
-          <div class="elem__control--settings">
-            <div class="control__title">
-              <p>Logout All Accounts</p>
-            </div>
-            <div class="control__value">
-                <p></p>
-            </div>
-            <div class="value__updater">
-              <a onClick={this.logoutAll}>Logout All</a>
-            </div>
-          </div>
           {/* <div class="elem__control--settings">
             <div class="control__title">
               <p>Two factor authentication</p>
@@ -1091,12 +1080,6 @@ class SettingsPageContainer extends React.Component {
           </div>
           <div class="elem__control--settings storage__control">
             <div class="active__storage">
-              <div class="control__title">
-                <div class="double__title">
-                  <p>{env.commercialMode ? "myDrive" : "Local Storage"}</p>
-                  <span>{!this.state.loaded ? "Loading..." : (env.commercialMode && this.state.userDetails.activeSubscription) ? "Plan Type" : ""}</span>
-                </div>
-              </div>
               <div class="control__value">
                 <div class="available__space--wrap">
                   <div class="space__bar" style={!this.state.loaded ? {} : (env.commercialMode && !this.state.userDetails.activeSubscription) ? {display:"none"} : {display:"block"}}>
@@ -1124,54 +1107,7 @@ class SettingsPageContainer extends React.Component {
               <a href="#">Invite Friends</a>
             </div>
           </div>
-          <div class="elem__control--settings">
-            <div class="control__title">
-              <div class="double__title">
-                <p>Google Drive</p>
-                <span>{!this.state.loaded ? "Loading..." : this.state.userDetails.googleDriveEnabled ? this.state.userDetails.googleDriveData.id : "No Google Account"}</span>
-              </div>
-            </div>
-            <div class="control__value">
-              <div class="available__space--wrap">
-                <div class="space__bar" style={!this.state.loaded ? {} : this.state.userDetails.googleDriveEnabled ? {display:"block"} : {display:"none"}}>
-                  <div
-                    class="active__space--bar"
-                    style={{backgroundColor:"#3c85ee", width: !this.state.loaded ? "0%" : this.state.userDetails.googleDriveEnabled ? `${this.getStoragePercentageGoogle()}%` : '0%'}}
-                  ></div>
-                </div>
-                <span>{this.state.userDetails.googleDriveEnabled ? !this.state.userDetails.storageDataGoogle.failed ? `${bytes(this.state.userDetails.storageDataGoogle.storageSize)} of 
-                  ${bytes(this.state.userDetails.storageDataGoogle.storageLimit)} used` : "Failed" : ""}
-                </span>
-              </div>
-            </div>
-            <div class="value__updater">
-              <a onClick={this.showGoogleAccount}>{!this.state.loaded ? "Loading..." : this.state.userDetails.googleDriveEnabled ? "Edit" : "Add"}</a>
-            </div>
-          </div>
           
-          <div class="elem__control--settings">
-            <div class="control__title">
-              <div class="double__title">
-                <p>Amazon S3</p>
-                <span>{!this.state.loaded ? "Loading..." : this.state.userDetails.s3Enabled ? this.state.userDetails.s3Data.bucket : "S3 Not Enabled"}</span>
-              </div>
-            </div>
-            <div class="control__value" style={!this.state.loaded ? {} : this.state.userDetails.s3Enabled ? {display:"block"} : {display:"none"}}>
-              <div class="available__space--wrap">
-                <div class="space__bar">
-                  <div
-                    class="active__space--bar"
-                    style={{backgroundColor:"#3c85ee", width:"100%"}}
-                  ></div>
-                </div>
-                <span>{this.state.userDetails.s3Enabled ? !this.state.userDetails.storageDataPersonal.failed ? 
-                `${bytes(this.state.userDetails.storageDataPersonal.storageSize)} used` : "Failed" : ""}</span>
-              </div>
-            </div>
-            <div class="value__updater">
-              <a onClick={this.showS3Account}>{!this.state.loaded ? "Loading..." : this.state.userDetails.s3Enabled ? "Edit" : "Add"}</a>
-            </div>
-          </div>
         </div>
         <div class="elem__settings more__accounts" style={{display:"none"}}>
           <div class="head__settings">

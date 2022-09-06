@@ -51,6 +51,7 @@ class NewContextMenuContainer extends React.Component {
     startLockingFile = () => {
         console.log(this.props.lockFile);
         this.props.lockFile(this.props.file._id);
+        // this.props.resetSelected();
     }
 
 

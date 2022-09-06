@@ -7,9 +7,15 @@ class RightSection extends React.Component {
 
     constructor(props) {
         super(props)
+
+        this.state = {
+            lockDate: props ? props.selectedItem.lockDate : undefined
+        }
     }
 
+
     render () {
+        console.log(this.state.lockDate);
 
         return (
 
@@ -42,9 +48,9 @@ class RightSection extends React.Component {
                         <div class="elem__file--info">
                                 <span>Created</span><span>{moment(this.props.selectedItem.date).format("L")}</span>
                         </div>
-                        {this.props.selectedItem.lockUntil && 
+                        {this.props.selectedItem.lockDate && 
                         <div class="elem__file--info">
-                                <span>Locked until</span><span>{moment(this.props.selectedItem.lockUntil).format("L")}</span>
+                                <span>Locked until</span><span>{moment(this.props.selectedItem.lockDate).format("L")}</span>
                         </div>
                         }
                         <div class="elem__file--info">
@@ -55,13 +61,13 @@ class RightSection extends React.Component {
                         </div>
                     </div>
                     <div class="file__control">
-                        <a onClick={this.props.openItem}>{this.props.selectedItem.file ? "Open File" : "Open Folder"}</a>
+                        <a onClick={this.props.selectedItem.lockDate ? undefined:this.props.openItem}>{this.props.selectedItem.file ? "Open File" : "Open Folder"}</a>
                         <div class="file__settings">
                             <a onClick={this.props.selectContext}><i class="fas fa-ellipsis-h" aria-hidden="true"></i></a>
                         </div>
                     </div>
                     <div className="context__menu--wrapper" onClick={this.props.clickTest}>
-                        <NewContextMenu gridMode={true} folderMode={!this.props.selectedItem.file} contextSelected={this.props.state.contextSelected} closeContext={this.props.closeContext} downloadFile={this.props.downloadFile} file={this.props.selectedItem.data} changeEditNameMode={this.props.changeEditNameMode} startMovingFile={this.props.startMoveFolder} changeDeleteMode={this.props.changeDeleteMode} lockFile={this.props.lockFile}/>
+                        <NewContextMenu gridMode={true} folderMode={!this.props.selectedItem.file} contextSelected={this.props.state.contextSelected} closeContext={this.props.closeContext} downloadFile={this.props.downloadFile} file={this.props.selectedItem.data} changeEditNameMode={this.props.changeEditNameMode} startMovingFile={this.props.startMoveFolder} changeDeleteMode={this.props.changeDeleteMode} lockFile={this.props.lockFile} resetSelected={this.props.resetSelected}/>
                     </div>
                 </div>
     
